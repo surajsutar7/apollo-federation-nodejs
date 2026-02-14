@@ -1,0 +1,24 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@external"])
+
+type Query {
+  orders: [Order]
+  order(id: ID!): Order
+}
+
+type Order @key(fields: "id") {
+  id: ID!
+  buyer: User
+  items: [Product]
+  total: Float
+}
+
+type User @key(fields: "id") {
+  id: ID!
+  orders: [Order]
+}
+
+type Product @key(fields: "id") {
+  id: ID!
+}

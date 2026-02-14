@@ -1,0 +1,13 @@
+node_modules/
+.env
+.DS_Store
+
+# Exclude subgraph READMEs as requested
+subgraphs/users/README.md
+subgraphs/reviews/README.md
+subgraphs/products/README.md
+subgraphs/orders/README.md
+subgraphs/inventory/README.md
+
+# Optional: exclude the generated diagram image if you don't want it public
+apollo_federation_architecture_diagram.png

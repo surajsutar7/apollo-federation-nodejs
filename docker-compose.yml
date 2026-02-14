@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: 
+      context: .
+      dockerfile: gateway/Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - users
+      - products
+      - inventory
+      - orders
+      - reviews
+
+  users:
+    build:
+      context: .
+      dockerfile: subgraphs/users/Dockerfile
+    ports:
+      - "4001:4001"
+
+  products:
+    build:
+      context: .
+      dockerfile: subgraphs/products/Dockerfile
+    ports:
+      - "4002:4002"
+
+  inventory:
+    build:
+      context: .
+      dockerfile: subgraphs/inventory/Dockerfile
+    ports:
+      - "4003:4003"
+
+  orders:
+    build:
+      context: .
+      dockerfile: subgraphs/orders/Dockerfile
+    ports:
+      - "4004:4004"
+
+  reviews:
+    build:
+      context: .
+      dockerfile: subgraphs/reviews/Dockerfile
+    ports:
+      - "4005:4005"

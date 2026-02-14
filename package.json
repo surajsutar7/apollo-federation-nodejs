@@ -1,0 +1,38 @@
+{
+  "name": "apollo-federation-nodejs",
+  "version": "1.0.0",
+  "description": "Apollo Federation POC with 5 subgraphs",
+  "private": true,
+  "workspaces": [
+    "gateway",
+    "subgraphs/*"
+  ],
+  "scripts": {
+    "start:users": "node subgraphs/users/index.js",
+    "start:products": "node subgraphs/products/index.js",
+    "start:inventory": "node subgraphs/inventory/index.js",
+    "start:orders": "node subgraphs/orders/index.js",
+    "start:reviews": "node subgraphs/reviews/index.js",
+    "start:gateway": "node gateway/index.js",
+    "dev": "concurrently \"npm:start:users\" \"npm:start:products\" \"npm:start:inventory\" \"npm:start:orders\" \"npm:start:reviews\" \"npm:start:gateway\"",
+    "test": "jest",
+    "test:ci": "concurrently -k -s first \"npm run dev\" \"wait-on http://localhost:4000 && npm test\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-fetch": "^4.1.0",
+    "jest": "^30.2.0",
+    "supertest": "^7.2.2",
+    "wait-on": "^9.0.4"
+  },
+  "dependencies": {
+    "@apollo/gateway": "^2.13.0",
+    "@apollo/server": "^5.4.0",
+    "@apollo/subgraph": "^2.13.0",
+    "dotenv": "^17.3.1",
+    "graphql": "^16.12.0",
+    "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^9.0.3",
+    "nodemon": "^3.1.11"
+  }
+}
