@@ -10,4 +10,3 @@ subgraphs/orders/README.md
 subgraphs/inventory/README.md
 
 # Optional: exclude the generated diagram image if you don't want it public
-apollo_federation_architecture_diagram.png
